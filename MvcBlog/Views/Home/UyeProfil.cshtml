@@ -1,0 +1,57 @@
+﻿@model MvcBlog.Models.Uye
+
+@{
+    ViewBag.Title = "UyeProfil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UyeProfil</h2>
+
+<div class="col-md-8">
+    <h4>Uye Profil</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KullaniciAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KullaniciAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdSoyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdSoyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            <img src="@Model.Foto" alt="@Model.AdSoyad" class="img-circle" width="75"/>
+        </dd>
+
+    </dl>
+    <div class="align-content-center">
+        @foreach (var item in Model.Makales.OrderByDescending(m=>m.Makaleid))
+        {
+            <li>
+                <a href="/Home/MakaleDetay/@item.Makaleid" >@item.Baslik </a>
+            </li>
+        }
+    </div>
+
+</div>
